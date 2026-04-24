@@ -23,705 +23,170 @@
       --card: #ffffff;
       --shadow: 0 4px 32px rgba(13,13,15,0.10);
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); min-height: 100vh; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 999; opacity: 0.4; }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--paper);
-      color: var(--ink);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* ── GRAIN OVERLAY ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 999;
-      opacity: 0.4;
-    }
-
-    /* ── HEADER ── */
-    header {
-      position: relative;
-      background: var(--ink);
-      color: var(--paper);
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .header-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 60px 40px 50px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .header-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(201,168,76,0.15);
-      border: 1px solid rgba(201,168,76,0.4);
-      border-radius: 4px;
-      padding: 6px 14px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 24px;
-      animation: fadeUp 0.6s ease both;
-    }
-
-    .header-badge span { font-size: 14px; }
-
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(48px, 8vw, 96px);
-      font-weight: 900;
-      line-height: 0.9;
-      letter-spacing: -0.02em;
-      animation: fadeUp 0.6s 0.1s ease both;
-    }
-
-    h1 em {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    .header-sub {
-      margin-top: 20px;
-      font-size: 16px;
-      font-weight: 300;
-      color: rgba(245,242,235,0.6);
-      max-width: 480px;
-      line-height: 1.7;
-      animation: fadeUp 0.6s 0.2s ease both;
-    }
-
-    .header-meta {
-      margin-top: 32px;
-      display: flex;
-      gap: 32px;
-      flex-wrap: wrap;
-      animation: fadeUp 0.6s 0.3s ease both;
-    }
-
-    .meta-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .meta-label {
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(245,242,235,0.4);
-    }
-
-    .meta-value {
-      font-family: 'DM Mono', monospace;
-      font-size: 13px;
-      color: var(--gold-light);
-    }
-
-    /* decorative lines */
-    .header-deco {
-      position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      width: 340px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0.06;
-    }
-
+    header { position: relative; background: var(--ink); color: var(--paper); padding: 0; overflow: hidden; }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 60px 40px 50px; position: relative; z-index: 1; }
+    .header-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4); border-radius: 4px; padding: 6px 14px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; animation: fadeUp 0.6s ease both; }
+    h1 { font-family: 'Playfair Display', serif; font-size: clamp(48px, 8vw, 96px); font-weight: 900; line-height: 0.9; letter-spacing: -0.02em; animation: fadeUp 0.6s 0.1s ease both; }
+    h1 em { font-style: italic; color: var(--gold); }
+    .header-sub { margin-top: 20px; font-size: 16px; font-weight: 300; color: rgba(245,242,235,0.6); max-width: 480px; line-height: 1.7; animation: fadeUp 0.6s 0.2s ease both; }
+    .header-meta { margin-top: 32px; display: flex; gap: 32px; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
+    .meta-item { display: flex; flex-direction: column; gap: 2px; }
+    .meta-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,242,235,0.4); }
+    .meta-value { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--gold-light); }
+    .header-deco { position: absolute; right: 0; top: 0; bottom: 0; width: 340px; display: flex; align-items: center; justify-content: center; opacity: 0.06; }
     .header-deco svg { width: 100%; height: 100%; }
 
-    /* ── NAV TABS ── */
-    .tabs {
-      background: var(--ink);
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .tabs-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 40px;
-      display: flex;
-      gap: 0;
-    }
-
-    .tab-btn {
-      background: none;
-      border: none;
-      border-bottom: 2px solid transparent;
-      color: rgba(245,242,235,0.45);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      padding: 18px 20px;
-      cursor: pointer;
-      transition: color 0.2s, border-color 0.2s;
-      white-space: nowrap;
-    }
-
+    .tabs { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); }
+    .tabs-inner { max-width: 1100px; margin: 0 auto; padding: 0 40px; display: flex; gap: 0; }
+    .tab-btn { background: none; border: none; border-bottom: 2px solid transparent; color: rgba(245,242,235,0.45); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.05em; padding: 18px 20px; cursor: pointer; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
     .tab-btn:hover { color: var(--paper); }
     .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
 
-    /* ── MAIN ── */
-    main {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 60px 40px 100px;
-    }
-
+    main { max-width: 1100px; margin: 0 auto; padding: 60px 40px 100px; }
     .tab-panel { display: none; animation: fadeUp 0.4s ease both; }
     .tab-panel.active { display: block; }
 
-    /* ── SECTION TITLE ── */
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 36px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
+    .section-title { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 700; margin-bottom: 8px; }
     .section-title em { color: var(--gold); font-style: italic; }
+    .section-lead { font-size: 15px; color: var(--muted); margin-bottom: 48px; max-width: 600px; line-height: 1.7; }
 
-    .section-lead {
-      font-size: 15px;
-      color: var(--muted);
-      margin-bottom: 48px;
-      max-width: 600px;
-      line-height: 1.7;
-    }
+    /* STATS BAR */
+    .stats-bar { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 40px; }
+    .stat-pill { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 14px 22px; display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 120px; }
+    .stat-num { font-family: 'DM Mono', monospace; font-size: 24px; font-weight: 500; color: var(--ink); }
+    .stat-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .stat-pill.gold .stat-num { color: var(--gold); }
+    .stat-pill.green .stat-num { color: var(--green); }
+    .stat-pill.amber .stat-num { color: var(--amber); }
 
-    /* ── BUSCADOR ── */
-    .search-box {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-
-    .search-input {
-      flex: 1;
-      min-width: 260px;
-      font-family: 'DM Mono', monospace;
-      font-size: 16px;
-      padding: 16px 20px;
-      border: 2px solid var(--border);
-      border-radius: 6px;
-      background: var(--card);
-      color: var(--ink);
-      transition: border-color 0.2s, box-shadow 0.2s;
-      outline: none;
-    }
-
-    .search-input:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 4px rgba(201,168,76,0.12);
-    }
-
+    .search-box { display: flex; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
+    .search-input { flex: 1; min-width: 260px; font-family: 'DM Mono', monospace; font-size: 16px; padding: 16px 20px; border: 2px solid var(--border); border-radius: 6px; background: var(--card); color: var(--ink); transition: border-color 0.2s, box-shadow 0.2s; outline: none; }
+    .search-input:focus { border-color: var(--gold); box-shadow: 0 0 0 4px rgba(201,168,76,0.12); }
     .search-input::placeholder { color: #b0a898; }
-
-    .search-btn {
-      background: var(--ink);
-      color: var(--paper);
-      border: none;
-      border-radius: 6px;
-      padding: 16px 28px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
+    .search-btn { background: var(--ink); color: var(--paper); border: none; border-radius: 6px; padding: 16px 28px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s, transform 0.15s; display: flex; align-items: center; gap: 8px; }
     .search-btn:hover { background: #1f1f23; transform: translateY(-1px); }
-    .search-btn:active { transform: translateY(0); }
 
-    /* ── NORMA CARD ── */
-    .norma-card {
-      background: var(--card);
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      margin-bottom: 24px;
-      animation: slideIn 0.35s ease both;
-    }
+    /* SECTOR QUICK FILTERS */
+    .sector-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+    .sector-btn { background: var(--paper); border: 1px solid var(--border); border-radius: 100px; padding: 6px 14px; font-size: 12px; cursor: pointer; transition: all 0.2s; color: var(--muted); font-family: 'DM Sans', sans-serif; }
+    .sector-btn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .sector-btn.active { background: var(--gold); color: var(--ink); border-color: var(--gold); font-weight: 600; }
 
-    .norma-card-header {
-      padding: 24px 28px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .norma-tipo {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .norma-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 1.3;
-    }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 16px;
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .status-badge.vigente {
-      background: var(--green-light);
-      color: var(--green);
-    }
-
-    .status-badge.espera {
-      background: var(--amber-light);
-      color: var(--amber);
-    }
-
-    .status-badge.dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: currentColor;
-      animation: pulse 2s infinite;
-    }
-
-    .norma-card-body {
-      padding: 24px 28px;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 20px;
-    }
-
-    .norma-field label {
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .norma-field value {
-      font-size: 14px;
-      font-weight: 500;
-      display: block;
-    }
-
-    .norma-card-footer {
-      background: var(--ink);
-      color: var(--paper);
-      padding: 20px 28px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
+    .norma-card { background: var(--card); border-radius: 10px; border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden; margin-bottom: 24px; animation: slideIn 0.35s ease both; }
+    .norma-card-header { padding: 24px 28px; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .norma-tipo { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .norma-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; line-height: 1.3; }
+    .status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; flex-shrink: 0; }
+    .status-badge.vigente { background: var(--green-light); color: var(--green); }
+    .status-badge.espera { background: var(--amber-light); color: var(--amber); }
+    .status-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; animation: pulse 2s infinite; display: inline-block; }
+    .norma-card-body { padding: 24px 28px; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+    .norma-field label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 4px; }
+    .norma-field value { font-size: 14px; font-weight: 500; display: block; }
+    .norma-card-footer { background: var(--ink); color: var(--paper); padding: 20px 28px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
     .footer-icon { font-size: 24px; }
-
-    .footer-text strong {
-      font-size: 14px;
-      font-weight: 600;
-      display: block;
-      color: var(--gold);
-    }
-
-    .footer-text span {
-      font-size: 12px;
-      color: rgba(245,242,235,0.55);
-    }
-
-    .no-result {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 48px 32px;
-      text-align: center;
-      color: var(--muted);
-      animation: fadeUp 0.3s ease;
-    }
-
+    .footer-text strong { font-size: 14px; font-weight: 600; display: block; color: var(--gold); }
+    .footer-text span { font-size: 12px; color: rgba(245,242,235,0.55); }
+    .no-result { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 48px 32px; text-align: center; color: var(--muted); animation: fadeUp 0.3s ease; }
     .no-result .no-icon { font-size: 40px; margin-bottom: 12px; }
     .no-result h3 { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--ink); margin-bottom: 8px; }
 
-    /* ── CATÁLOGO ── */
-    .catalog-grid {
-      display: grid;
-      gap: 16px;
-    }
+    /* CATÁLOGO */
+    .catalog-grid { display: grid; gap: 16px; }
+    .catalog-filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+    .filter-btn { background: var(--card); border: 1px solid var(--border); border-radius: 100px; padding: 8px 18px; font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; transition: all 0.2s; color: var(--muted); }
+    .filter-btn:hover, .filter-btn.active { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+    .catalog-row { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 18px 24px; display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 16px; transition: box-shadow 0.2s, transform 0.2s; animation: fadeUp 0.4s ease both; }
+    .catalog-row:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+    .catalog-tipo-badge { font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; padding: 4px 10px; border-radius: 4px; background: var(--paper); border: 1px solid var(--border); white-space: nowrap; }
+    .catalog-sumilla { font-size: 13px; color: var(--ink); line-height: 1.4; }
+    .catalog-num { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); white-space: nowrap; }
 
-    .catalog-filters {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 28px;
-    }
+    /* PAGINATION */
+    .pagination { display: flex; gap: 8px; align-items: center; justify-content: center; margin-top: 28px; flex-wrap: wrap; }
+    .page-btn { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 8px 14px; font-family: 'DM Mono', monospace; font-size: 13px; cursor: pointer; transition: all 0.2s; color: var(--muted); }
+    .page-btn:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+    .page-btn.active { background: var(--gold); color: var(--ink); border-color: var(--gold); font-weight: 600; }
+    .page-info { font-size: 12px; color: var(--muted); padding: 0 8px; }
 
-    .filter-btn {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 8px 18px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      cursor: pointer;
-      transition: all 0.2s;
-      color: var(--muted);
-    }
-
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--ink);
-      border-color: var(--ink);
-      color: var(--paper);
-    }
-
-    .catalog-row {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 18px 24px;
-      display: grid;
-      grid-template-columns: auto 1fr auto auto;
-      align-items: center;
-      gap: 16px;
-      transition: box-shadow 0.2s, transform 0.2s;
-      animation: fadeUp 0.4s ease both;
-    }
-
-    .catalog-row:hover {
-      box-shadow: var(--shadow);
-      transform: translateY(-2px);
-    }
-
-    .catalog-tipo-badge {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      font-weight: 500;
-      padding: 4px 10px;
-      border-radius: 4px;
-      background: var(--paper);
-      border: 1px solid var(--border);
-      white-space: nowrap;
-    }
-
-    .catalog-sumilla {
-      font-size: 13px;
-      color: var(--ink);
-      line-height: 1.4;
-    }
-
-    .catalog-num {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-
-    /* ── APRENDE ── */
-    .learn-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 24px;
-      margin-bottom: 48px;
-    }
-
-    .concept-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 32px;
-      position: relative;
-      overflow: hidden;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-
-    .concept-card:hover {
-      box-shadow: var(--shadow);
-      transform: translateY(-3px);
-    }
-
-    .concept-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-    }
-
+    /* APRENDE */
+    .learn-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-bottom: 48px; }
+    .concept-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 32px; position: relative; overflow: hidden; transition: box-shadow 0.2s, transform 0.2s; }
+    .concept-card:hover { box-shadow: var(--shadow); transform: translateY(-3px); }
+    .concept-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
     .concept-card.gold::before { background: var(--gold); }
     .concept-card.blue::before { background: var(--blue); }
     .concept-card.red::before { background: var(--red); }
     .concept-card.green::before { background: var(--green); }
-
+    .concept-card.amber::before { background: var(--amber); }
+    .concept-card.purple::before { background: #6b3fa0; }
     .concept-icon { font-size: 32px; margin-bottom: 16px; }
-    .concept-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    .concept-desc {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
+    .concept-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+    .concept-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
 
-    /* TIMELINE */
-    .timeline {
-      position: relative;
-      padding-left: 32px;
-      margin: 48px 0;
-    }
+    .timeline { position: relative; padding-left: 32px; margin: 48px 0; }
+    .timeline::before { content: ''; position: absolute; left: 12px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--gold), var(--ink)); }
+    .tl-item { position: relative; margin-bottom: 32px; animation: fadeUp 0.5s ease both; }
+    .tl-dot { position: absolute; left: -26px; top: 4px; width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--gold); background: var(--paper); }
+    .tl-item.active .tl-dot { background: var(--gold); box-shadow: 0 0 0 4px rgba(201,168,76,0.2); }
+    .tl-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+    .tl-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .tl-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
 
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 12px;
-      top: 0; bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--gold), var(--ink));
-    }
+    /* TABLA COMPARATIVA */
+    .compare-table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 10px; overflow: hidden; border: 1px solid var(--border); margin: 32px 0; box-shadow: var(--shadow); }
+    .compare-table th { background: var(--ink); color: var(--gold); font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; padding: 14px 20px; text-align: left; }
+    .compare-table td { padding: 14px 20px; font-size: 13px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: rgba(201,168,76,0.04); }
+    .tipo-tag { display: inline-block; font-family: 'DM Mono', monospace; font-size: 10px; padding: 3px 8px; border-radius: 3px; background: var(--paper); border: 1px solid var(--border); }
 
-    .tl-item {
-      position: relative;
-      margin-bottom: 32px;
-      animation: fadeUp 0.5s ease both;
-    }
-
-    .tl-dot {
-      position: absolute;
-      left: -26px;
-      top: 4px;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      border: 2px solid var(--gold);
-      background: var(--paper);
-    }
-
-    .tl-item.active .tl-dot {
-      background: var(--gold);
-      box-shadow: 0 0 0 4px rgba(201,168,76,0.2);
-    }
-
-    .tl-label {
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 4px;
-    }
-
-    .tl-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .tl-desc {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* ── QUIZ ── */
-    .quiz-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 36px;
-      max-width: 680px;
-      box-shadow: var(--shadow);
-    }
-
-    .quiz-progress {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 28px;
-    }
-
-    .quiz-prog-dot {
-      height: 4px;
-      flex: 1;
-      border-radius: 2px;
-      background: var(--border);
-      transition: background 0.3s;
-    }
-
+    /* QUIZ */
+    .quiz-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 36px; max-width: 680px; box-shadow: var(--shadow); }
+    .quiz-progress { display: flex; gap: 6px; margin-bottom: 28px; }
+    .quiz-prog-dot { height: 4px; flex: 1; border-radius: 2px; background: var(--border); transition: background 0.3s; }
     .quiz-prog-dot.done { background: var(--gold); }
     .quiz-prog-dot.current { background: var(--ink); }
-
-    .quiz-q {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 700;
-      line-height: 1.4;
-      margin-bottom: 24px;
-    }
-
-    .quiz-options {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .quiz-opt {
-      background: var(--paper);
-      border: 2px solid var(--border);
-      border-radius: 8px;
-      padding: 14px 18px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      cursor: pointer;
-      text-align: left;
-      transition: all 0.2s;
-      color: var(--ink);
-    }
-
-    .quiz-opt:hover:not(:disabled) {
-      border-color: var(--gold);
-      background: rgba(201,168,76,0.07);
-    }
-
+    .quiz-q { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; line-height: 1.4; margin-bottom: 24px; }
+    .quiz-options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+    .quiz-opt { background: var(--paper); border: 2px solid var(--border); border-radius: 8px; padding: 14px 18px; font-family: 'DM Sans', sans-serif; font-size: 14px; cursor: pointer; text-align: left; transition: all 0.2s; color: var(--ink); }
+    .quiz-opt:hover:not(:disabled) { border-color: var(--gold); background: rgba(201,168,76,0.07); }
     .quiz-opt.correct { background: var(--green-light); border-color: var(--green); color: var(--green); }
     .quiz-opt.wrong { background: #fde8e8; border-color: var(--red); color: var(--red); }
-
-    .quiz-feedback {
-      font-size: 14px;
-      padding: 14px 18px;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      line-height: 1.6;
-    }
-
+    .quiz-feedback { font-size: 14px; padding: 14px 18px; border-radius: 8px; margin-bottom: 20px; line-height: 1.6; }
     .quiz-feedback.ok { background: var(--green-light); color: var(--green); }
     .quiz-feedback.fail { background: #fde8e8; color: var(--red); }
-
-    .quiz-next {
-      background: var(--ink);
-      color: var(--paper);
-      border: none;
-      border-radius: 6px;
-      padding: 14px 28px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s;
-      display: none;
-    }
-
+    .quiz-next { background: var(--ink); color: var(--paper); border: none; border-radius: 6px; padding: 14px 28px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s; display: none; }
     .quiz-next:hover { background: #1f1f23; }
-
-    .quiz-score {
-      text-align: center;
-      padding: 20px 0;
-    }
-
-    .score-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 64px;
-      font-weight: 900;
-      color: var(--gold);
-    }
-
+    .quiz-score { text-align: center; padding: 20px 0; }
+    .score-num { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 900; color: var(--gold); }
     .score-label { font-size: 15px; color: var(--muted); margin-top: 4px; }
     .score-msg { font-size: 18px; font-weight: 600; margin: 16px 0 24px; }
+    .quiz-restart { background: var(--ink); color: var(--paper); border: none; border-radius: 6px; padding: 14px 28px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; }
 
-    .quiz-restart {
-      background: var(--ink);
-      color: var(--paper);
-      border: none;
-      border-radius: 6px;
-      padding: 14px 28px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    /* ── FOOT ── */
-    footer {
-      background: var(--ink);
-      color: rgba(245,242,235,0.4);
-      text-align: center;
-      padding: 32px;
-      font-size: 12px;
-      letter-spacing: 0.05em;
-    }
-
+    footer { background: var(--ink); color: rgba(245,242,235,0.4); text-align: center; padding: 32px; font-size: 12px; letter-spacing: 0.05em; }
     footer strong { color: var(--gold); }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(-10px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
-    /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
       .header-inner { padding: 40px 24px 36px; }
       main { padding: 40px 24px 80px; }
       .tabs-inner { padding: 0 24px; overflow-x: auto; }
       .catalog-row { grid-template-columns: 1fr; }
+      .stats-bar { gap: 12px; }
     }
   </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
   <div class="header-deco">
     <svg viewBox="0 0 340 500" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -739,59 +204,51 @@
     <h1>Norma<em>Track</em></h1>
     <p class="header-sub">Buscador de vigencia legal basado en metadatos oficiales del SPIJ — Ministerio de Justicia y Derechos Humanos del Perú.</p>
     <div class="header-meta">
-      <div class="meta-item">
-        <span class="meta-label">Dataset</span>
-        <span class="meta-value">SPIJ / MINJUSDH</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Versión</span>
-        <span class="meta-value">1.0</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-label">Normas indexadas</span>
-        <span class="meta-value" id="total-normas">—</span>
-      </div>
-     
+      <div class="meta-item"><span class="meta-label">Dataset</span><span class="meta-value">SPIJ / MINJUSDH</span></div>
+      <div class="meta-item"><span class="meta-label">Versión</span><span class="meta-value">2.0</span></div>
+      <div class="meta-item"><span class="meta-label">Normas indexadas</span><span class="meta-value" id="total-normas">—</span></div>
+      <div class="meta-item"><span class="meta-label">Sectores</span><span class="meta-value" id="total-sectores">—</span></div>
     </div>
   </div>
 </header>
 
-<!-- TABS -->
 <div class="tabs">
   <div class="tabs-inner">
-    <button class="tab-btn active" onclick="showTab('buscar')">🔍 Buscador</button>
-    <button class="tab-btn" onclick="showTab('catalogo')">📋 Catálogo</button>
-    <button class="tab-btn" onclick="showTab('aprende')">📖 Aprende</button>
-    <button class="tab-btn" onclick="showTab('quiz')">🧠 Quiz</button>
+    <button class="tab-btn active" onclick="showTab('buscar', this)">🔍 Buscador</button>
+    <button class="tab-btn" onclick="showTab('catalogo', this)">📋 Catálogo</button>
+    <button class="tab-btn" onclick="showTab('aprende', this)">📖 Aprende</button>
+    <button class="tab-btn" onclick="showTab('quiz', this)">🧠 Quiz</button>
   </div>
 </div>
 
-<!-- MAIN -->
 <main>
 
-  <!-- ── TAB: BUSCAR ── -->
+  <!-- TAB BUSCAR -->
   <div id="tab-buscar" class="tab-panel active">
     <p class="section-title">Busca una <em>norma legal</em></p>
-    <p class="section-lead">Ingresa el número de la ley, decreto supremo o resolución para consultar su estado de vigencia según el SPIJ.</p>
+    <p class="section-lead">Ingresa número de ley, decreto, resolución o una palabra clave del tema para consultar su estado de vigencia.</p>
+
+    <div class="stats-bar" id="stats-bar"></div>
 
     <div class="search-box">
-      <input class="search-input" id="search-input" type="text" placeholder="Ej: 32002  ó  004-2024-JP  ó  31941" />
+      <input class="search-input" id="search-input" type="text" placeholder="Ej: 32002  ó  pensiones  ó  salud  ó  DS 004-2024" />
       <button class="search-btn" onclick="buscar()">⚖️ Consultar vigencia</button>
     </div>
 
+    <div class="sector-filters" id="sector-filters-buscar"></div>
     <div id="search-result"></div>
   </div>
 
-  <!-- ── TAB: CATÁLOGO ── -->
+  <!-- TAB CATÁLOGO -->
   <div id="tab-catalogo" class="tab-panel">
     <p class="section-title">Catálogo de <em>normas</em></p>
-    <p class="section-lead">Todas las normas indexadas en el sistema. Filtra por tipo o sector.</p>
-
+    <p class="section-lead">Todas las normas indexadas en el sistema. Filtra por tipo para navegar el ordenamiento jurídico peruano.</p>
     <div class="catalog-filters" id="catalog-filters"></div>
     <div class="catalog-grid" id="catalog-grid"></div>
+    <div class="pagination" id="catalog-pagination"></div>
   </div>
 
-  <!-- ── TAB: APRENDE ── -->
+  <!-- TAB APRENDE -->
   <div id="tab-aprende" class="tab-panel">
     <p class="section-title">Vigencia de la <em>norma</em></p>
     <p class="section-lead">Entiende cuándo empieza y cuándo termina una ley en el ordenamiento jurídico peruano.</p>
@@ -800,24 +257,104 @@
       <div class="concept-card gold">
         <div class="concept-icon">📰</div>
         <div class="concept-name">Publicación</div>
-        <div class="concept-desc">Una norma existe jurídicamente desde su publicación en el <strong>Diario Oficial El Peruano</strong>. Es el acto formal que la hace conocida al público.</div>
+        <div class="concept-desc">Una norma existe jurídicamente desde su publicación en el <strong>Diario Oficial El Peruano</strong>. Es el acto formal que la hace conocida al público y presupuesto necesario para su obligatoriedad.</div>
       </div>
       <div class="concept-card blue">
         <div class="concept-icon">⏳</div>
         <div class="concept-name">Vacatio Legis</div>
-        <div class="concept-desc">Período entre la publicación y la entrada en vigor. Permite a ciudadanos e instituciones prepararse. El Código Civil peruano, por ejemplo, tuvo vacatio legis de 1 año.</div>
+        <div class="concept-desc">Período entre la publicación y la entrada en vigor. Permite a ciudadanos e instituciones prepararse. El Código Civil peruano tuvo vacatio legis de 1 año (1984-1985).</div>
       </div>
       <div class="concept-card green">
         <div class="concept-icon">✅</div>
         <div class="concept-name">Vigencia</div>
-        <div class="concept-desc">Salvo disposición contraria, la norma entra en vigor <strong>al día siguiente de su publicación</strong> (Art. 109 de la Constitución Política del Perú).</div>
+        <div class="concept-desc">Salvo disposición contraria, la norma entra en vigor <strong>al día siguiente de su publicación</strong> (Art. 109 de la Constitución Política del Perú de 1993).</div>
       </div>
       <div class="concept-card red">
         <div class="concept-icon">❌</div>
         <div class="concept-name">Derogación</div>
-        <div class="concept-desc">Una norma pierde vigencia cuando es <strong>derogada expresa o tácitamente</strong> por una norma posterior. La derogación tácita ocurre cuando hay incompatibilidad.</div>
+        <div class="concept-desc">Una norma pierde vigencia cuando es <strong>derogada expresa o tácitamente</strong> por una norma posterior de igual o mayor jerarquía. La derogación tácita ocurre cuando hay incompatibilidad.</div>
+      </div>
+      <div class="concept-card amber">
+        <div class="concept-icon">🔄</div>
+        <div class="concept-name">Retroactividad</div>
+        <div class="concept-desc">En Perú, las leyes <strong>no tienen efecto retroactivo</strong> (Art. 103 Const.), salvo en materia penal cuando favorece al reo. Una norma solo rige hechos futuros a su vigencia.</div>
+      </div>
+      <div class="concept-card purple">
+        <div class="concept-icon">⚡</div>
+        <div class="concept-name">Aplicación Inmediata</div>
+        <div class="concept-desc">El Art. 103 también establece el principio de <strong>aplicación inmediata</strong>: la ley se aplica a las consecuencias y relaciones jurídicas existentes desde su vigencia, no desde el origen del acto.</div>
       </div>
     </div>
+
+    <p class="section-title" style="font-size:26px; margin-bottom: 8px;">Tipos de <em>normas</em> y su jerarquía</p>
+    <p class="section-lead">Cada tipo de norma tiene un rango jerárquico. La norma inferior no puede contradecir a la superior.</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Tipo de norma</th>
+          <th>Quién la emite</th>
+          <th>Vigencia</th>
+          <th>Ejemplo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tipo-tag">Constitución</span></td>
+          <td>Asamblea Constituyente / Referéndum</td>
+          <td>Desde publicación en El Peruano. Reforma requiere dos legislaturas o referéndum.</td>
+          <td>Constitución Política del Perú, 1993</td>
+        </tr>
+        <tr>
+          <td><span class="tipo-tag">Ley</span></td>
+          <td>Congreso de la República</td>
+          <td>Día siguiente a publicación, salvo vacatio legis expresa</td>
+          <td>Ley N° 30364 — Violencia contra la mujer</td>
+        </tr>
+        <tr>
+          <td><span class="tipo-tag">Decreto Legislativo</span></td>
+          <td>Poder Ejecutivo (por delegación)</td>
+          <td>Día siguiente a publicación</td>
+          <td>D.Leg. 1438 — Sistema Nacional de Contabilidad</td>
+        </tr>
+        <tr>
+          <td><span class="tipo-tag">Decreto de Urgencia</span></td>
+          <td>Poder Ejecutivo (materia económica)</td>
+          <td>Día siguiente a publicación; vigencia temporal</td>
+          <td>D.U. 026-2020 — Medidas COVID-19</td>
+        </tr>
+        <tr>
+          <td><span class="tipo-tag">Decreto Supremo</span></td>
+          <td>Presidente de la República + Ministro</td>
+          <td>Día siguiente a publicación</td>
+          <td>DS 011-2012-ED — Reglamento LGE</td>
+        </tr>
+        <tr>
+          <td><span class="tipo-tag">Resolución Ministerial</span></td>
+          <td>Ministros de Estado</td>
+          <td>Día siguiente a publicación</td>
+          <td>RM 448-2020-MINSA — Protocolo sanitario</td>
+        </tr>
+        <tr>
+          <td><span class="tipo-tag">Resolución</span></td>
+          <td>Organismos autónomos / Jefaturas</td>
+          <td>Desde publicación o notificación</td>
+          <td>Resoluciones del INDECOPI, SBS, SUNAT</td>
+        </tr>
+        <tr>
+          <td><span class="tipo-tag">Ordenanza Regional</span></td>
+          <td>Gobiernos Regionales</td>
+          <td>Desde publicación en el medio oficial regional</td>
+          <td>Ordenanzas del Gobierno Regional de Lima</td>
+        </tr>
+        <tr>
+          <td><span class="tipo-tag">Ordenanza Municipal</span></td>
+          <td>Municipalidades</td>
+          <td>Desde publicación o difusión según Ley Orgánica</td>
+          <td>Ordenanzas de la Municipalidad de Lima</td>
+        </tr>
+      </tbody>
+    </table>
 
     <p class="section-title" style="font-size:26px; margin-bottom: 8px;">Línea de <em>tiempo</em> de una ley</p>
     <p class="section-lead">Ciclo de vida completo de una norma legal en el Perú.</p>
@@ -827,79 +364,173 @@
         <div class="tl-dot"></div>
         <div class="tl-label">Paso 01</div>
         <div class="tl-title">Iniciativa legislativa</div>
-        <div class="tl-desc">El proyecto de ley es presentado ante el Congreso de la República por congresistas, el Poder Ejecutivo, los colegios profesionales o la ciudadanía (iniciativa popular).</div>
+        <div class="tl-desc">El proyecto es presentado ante el Congreso por congresistas, el Ejecutivo, colegios profesionales o la ciudadanía (iniciativa popular con 0.3% del electorado). Ingresa a la Mesa Directiva y se deriva a la comisión competente.</div>
       </div>
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-label">Paso 02</div>
-        <div class="tl-title">Debate y aprobación</div>
-        <div class="tl-desc">El pleno del Congreso debate y aprueba el proyecto. En caso de bicameralidad, pasa por ambas cámaras (Senado y Cámara de Diputados).</div>
+        <div class="tl-title">Debate en comisión</div>
+        <div class="tl-desc">La comisión dictamina el proyecto (favorable, desfavorable o con sustitutorio). El dictamen pasa al Orden del Día del Pleno. En bicameralidad, ambas cámaras deben pronunciarse.</div>
       </div>
       <div class="tl-item">
         <div class="tl-dot"></div>
         <div class="tl-label">Paso 03</div>
-        <div class="tl-title">Promulgación</div>
-        <div class="tl-desc">El Presidente de la República promulga la ley mediante decreto supremo. Si no lo hace en 15 días hábiles, el Congreso puede promulgarla directamente.</div>
+        <div class="tl-title">Aprobación en el Pleno</div>
+        <div class="tl-desc">El Pleno debate y vota. Se requiere mayoría simple salvo excepciones (leyes orgánicas: mayoría del número legal; reforma constitucional: mayoría absoluta en dos legislaturas o mayoría de 2/3 en una con referéndum).</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-label">Paso 04</div>
+        <div class="tl-title">Promulgación presidencial</div>
+        <div class="tl-desc">El Presidente de la República dispone de 15 días hábiles para promulgar. Puede observar la ley (vetarla parcialmente); el Congreso puede insistir con mayoría absoluta. Si no promulga ni observa, el Congreso la promulga directamente.</div>
       </div>
       <div class="tl-item active">
         <div class="tl-dot"></div>
-        <div class="tl-label">Paso 04 — Clave</div>
+        <div class="tl-label">Paso 05 — Clave</div>
         <div class="tl-title">Publicación en El Peruano</div>
-        <div class="tl-desc">La norma se publica en el Diario Oficial. <strong>Art. 109 Const.</strong>: "La ley es obligatoria desde el día siguiente de su publicación en el diario oficial, salvo disposición contraria de la misma ley que postergue su vigencia en todo o en parte."</div>
+        <div class="tl-desc">La norma se publica en el Diario Oficial El Peruano. <strong>Art. 109 Const.</strong>: "La ley es obligatoria desde el día siguiente de su publicación en el diario oficial, salvo disposición contraria de la misma ley que postergue su vigencia en todo o en parte."</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-label">Paso 05</div>
-        <div class="tl-title">Entrada en vigencia</div>
-        <div class="tl-desc">Al día siguiente de la publicación (o tras la vacatio legis si la norma la dispone), la ley es plenamente obligatoria en todo el territorio nacional.</div>
-      </div>
-      <div class="tl-item">
+      <div class="tl-item active">
         <div class="tl-dot"></div>
         <div class="tl-label">Paso 06</div>
+        <div class="tl-title">Entrada en vigencia</div>
+        <div class="tl-desc">Al día siguiente de la publicación (o tras la vacatio legis) la ley es obligatoria en todo el territorio. Nadie puede alegar ignorancia de la ley. Aplica incluso a relaciones jurídicas en curso (aplicación inmediata, Art. 103).</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-label">Paso 07</div>
+        <div class="tl-title">Reglamentación</div>
+        <div class="tl-desc">El Poder Ejecutivo puede dictar el reglamento (Decreto Supremo) para desarrollar los detalles operativos de la ley. Si la ley fija plazo y no se cumple, la norma igualmente es exigible sin reglamento.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-label">Paso 08</div>
         <div class="tl-title">Derogación o modificación</div>
-        <div class="tl-desc">La norma pierde vigencia al ser derogada por otra norma de igual o mayor jerarquía, ya sea de forma expresa (texto indica cuál deroga) o tácita (incompatibilidad entre normas).</div>
+        <div class="tl-desc">La norma pierde vigencia al ser derogada expresa o tácitamente por otra de igual o mayor jerarquía, o al vencer su plazo si era temporal. La modificación parcial deja vigente lo no modificado.</div>
       </div>
     </div>
 
     <div style="background: var(--ink); border-radius:10px; padding: 32px; color: var(--paper); margin-top: 12px;">
-      <div style="font-size:11px; letter-spacing:.1em; text-transform:uppercase; color: var(--gold); margin-bottom:12px;">📌 Artículo 109 — Constitución Política del Perú</div>
-      <div style="font-family:'Playfair Display',serif; font-size:18px; line-height:1.7; font-style:italic; opacity:0.9;">
-        "La ley es obligatoria desde el día siguiente de su publicación en el diario oficial, salvo disposición contraria de la misma ley que postergue su vigencia en todo o en parte."
-      </div>
+      <div style="font-size:11px; letter-spacing:.1em; text-transform:uppercase; color: var(--gold); margin-bottom:12px;">📌 Artículo 109 — Constitución Política del Perú (1993)</div>
+      <div style="font-family:'Playfair Display',serif; font-size:18px; line-height:1.7; font-style:italic; opacity:0.9;">"La ley es obligatoria desde el día siguiente de su publicación en el diario oficial, salvo disposición contraria de la misma ley que postergue su vigencia en todo o en parte."</div>
       <div style="margin-top:16px; font-size:12px; color:rgba(245,242,235,0.4);">Fundamento constitucional de la vigencia normativa en el Perú.</div>
+    </div>
+
+    <div style="background: var(--card); border: 1px solid var(--border); border-radius:10px; padding: 32px; margin-top: 24px;">
+      <div style="font-size:11px; letter-spacing:.1em; text-transform:uppercase; color: var(--muted); margin-bottom:12px;">📌 Artículo 103 — Constitución Política del Perú (1993)</div>
+      <div style="font-family:'Playfair Display',serif; font-size:17px; line-height:1.7; font-style:italic; color: var(--ink);">"Ninguna ley tiene fuerza ni efecto retroactivo, salvo en materia penal cuando favorece al reo. La ley, desde su entrada en vigencia, se aplica a las consecuencias de las relaciones y situaciones jurídicas existentes y no tiene fuerza ni efectos retroactivos…"</div>
+      <div style="margin-top:16px; font-size:12px; color: var(--muted);">Principio de irretroactividad y aplicación inmediata de la ley.</div>
     </div>
   </div>
 
-  <!-- ── TAB: QUIZ ── -->
+  <!-- TAB QUIZ -->
   <div id="tab-quiz" class="tab-panel">
     <p class="section-title">Pon a prueba tu <em>conocimiento</em></p>
-    <p class="section-lead">5 preguntas sobre vigencia de la norma en el ordenamiento jurídico peruano.</p>
+    <p class="section-lead">10 preguntas sobre vigencia de la norma en el ordenamiento jurídico peruano.</p>
     <div class="quiz-card" id="quiz-card"></div>
   </div>
 
 </main>
 
 <footer>
-  <strong>NormaTrack</strong> &nbsp;·&nbsp; Datos: SPIJ / MINJUSDH &nbsp;·&nbsp; Derecho — Vigencia de la Norma &nbsp;·&nbsp; Perú 2024–2026
+  <strong>NormaTrack</strong> &nbsp;·&nbsp; Datos: SPIJ / MINJUSDH &nbsp;·&nbsp; Vigencia de la Norma &nbsp;·&nbsp; Perú 2024–2026
 </footer>
 
 <script>
-// ── BASE DE DATOS ──
+// ════════════════════════════════════════════════
+// BASE DE DATOS EXPANDIDA — 60 normas
+// ════════════════════════════════════════════════
 const NORMAS = [
-  { tipo:"Ley", numero:"32002", sumilla:"Ley que autoriza el retiro extraordinario y facultativo de los fondos de los afiliados al Sistema Privado de Pensiones (AFP).", agrupacion:"Normas de alcance general", fecha_pub:"2024-04-18", sector:"Economía" },
-  { tipo:"Ley", numero:"31988", sumilla:"Ley que reforma la Constitución para restablecer la bicameralidad en el Congreso de la República del Perú.", agrupacion:"Constitución", fecha_pub:"2024-03-20", sector:"Justicia" },
+  // ── LEYES LABORALES Y TRABAJO ──
+  { tipo:"Ley", numero:"30709", sumilla:"Ley que prohíbe la discriminación remunerativa entre varones y mujeres.", agrupacion:"Normas de alcance general", fecha_pub:"2017-12-27", sector:"Trabajo" },
+  { tipo:"Ley", numero:"31261", sumilla:"Ley que modifica los artículos 5, 6 y 7 del Decreto Legislativo 713 sobre los descansos remunerados.", agrupacion:"Normas de alcance general", fecha_pub:"2021-05-19", sector:"Trabajo" },
   { tipo:"Decreto Supremo", numero:"004-2024-JP", sumilla:"Reglamento de la Ley que promueve la contratación de jóvenes y el primer empleo.", agrupacion:"Normas de alcance general", fecha_pub:"2024-05-10", sector:"Trabajo" },
-  { tipo:"Ley", numero:"32150", sumilla:"Ley que promueve la inversión en infraestructura de riego tecnificado para la agricultura familiar.", agrupacion:"Normas de alcance general", fecha_pub:"2026-04-23", sector:"Agricultura" },
   { tipo:"Decreto Supremo", numero:"005-2026-TR", sumilla:"Modifican el Reglamento de la Ley de Relaciones Colectivas de Trabajo.", agrupacion:"Normas de alcance general", fecha_pub:"2026-04-23", sector:"Trabajo" },
-  { tipo:"Resolución", numero:"124-2026-MINSA", sumilla:"Aprueban norma técnica para la prevención y control de enfermedades metaxénicas.", agrupacion:"Entidades de justicia", fecha_pub:"2026-04-23", sector:"Salud" },
-  { tipo:"Ley", numero:"31941", sumilla:"Ley que dicta medidas para asegurar el financiamiento de la infraestructura de transporte.", agrupacion:"Normas de alcance general", fecha_pub:"2023-11-25", sector:"Transportes" },
+  { tipo:"Ley", numero:"31110", sumilla:"Ley del Régimen Laboral Agrario y de Incentivos para el Sector Agrario y Riego, Agroexportador y Agroindustrial.", agrupacion:"Normas de alcance general", fecha_pub:"2020-12-31", sector:"Trabajo" },
+  { tipo:"Ley", numero:"31572", sumilla:"Ley que establece el teletrabajo como modalidad de prestación de servicios subordinada.", agrupacion:"Normas de alcance general", fecha_pub:"2022-08-24", sector:"Trabajo" },
+  { tipo:"Decreto Legislativo", numero:"1401", sumilla:"Decreto Legislativo que aprueba el Régimen Especial que regula las modalidades formativas laborales.", agrupacion:"Normas de alcance general", fecha_pub:"2018-09-08", sector:"Trabajo" },
+
+  // ── LEYES ECONÓMICAS Y FISCALES ──
+  { tipo:"Ley", numero:"32002", sumilla:"Ley que autoriza el retiro extraordinario y facultativo de los fondos de los afiliados al Sistema Privado de Pensiones (AFP).", agrupacion:"Normas de alcance general", fecha_pub:"2024-04-18", sector:"Economía" },
   { tipo:"Ley", numero:"31912", sumilla:"Ley que aprueba créditos suplementarios para el financiamiento de mayores gastos del sector público.", agrupacion:"Normas de alcance general", fecha_pub:"2023-10-27", sector:"Economía" },
+  { tipo:"Ley", numero:"31803", sumilla:"Ley de Presupuesto del Sector Público para el Año Fiscal 2023.", agrupacion:"Normas de alcance general", fecha_pub:"2022-12-06", sector:"Economía" },
+  { tipo:"Ley", numero:"31953", sumilla:"Ley de Presupuesto del Sector Público para el Año Fiscal 2024.", agrupacion:"Normas de alcance general", fecha_pub:"2023-12-08", sector:"Economía" },
+  { tipo:"Decreto Legislativo", numero:"1532", sumilla:"Decreto que regula el procedimiento administrativo de cobranza coactiva de obligaciones tributarias.", agrupacion:"Normas de alcance general", fecha_pub:"2022-03-19", sector:"Economía" },
+  { tipo:"Decreto Supremo", numero:"179-2004-EF", sumilla:"Texto Único Ordenado de la Ley del Impuesto a la Renta.", agrupacion:"Normas de alcance general", fecha_pub:"2004-12-08", sector:"Economía" },
+  { tipo:"Decreto Supremo", numero:"055-1999-EF", sumilla:"Texto Único Ordenado de la Ley del Impuesto General a las Ventas e Impuesto Selectivo al Consumo.", agrupacion:"Normas de alcance general", fecha_pub:"1999-04-15", sector:"Economía" },
+  { tipo:"Ley", numero:"28194", sumilla:"Ley para la Lucha contra la Evasión y para la Formalización de la Economía (Bancarización).", agrupacion:"Normas de alcance general", fecha_pub:"2004-03-26", sector:"Economía" },
+
+  // ── SALUD ──
+  { tipo:"Resolución", numero:"124-2026-MINSA", sumilla:"Aprueban norma técnica para la prevención y control de enfermedades metaxénicas.", agrupacion:"Entidades de justicia", fecha_pub:"2026-04-23", sector:"Salud" },
   { tipo:"Decreto Supremo", numero:"003-2024-SA", sumilla:"Aprueban el Reglamento de la Ley que garantiza el acceso a medicamentos genéricos.", agrupacion:"Normas de alcance general", fecha_pub:"2024-03-15", sector:"Salud" },
+  { tipo:"Ley", numero:"30885", sumilla:"Ley que establece la conformación y el funcionamiento de las Redes Integradas de Salud (RIS).", agrupacion:"Normas de alcance general", fecha_pub:"2018-12-22", sector:"Salud" },
+  { tipo:"Ley", numero:"26842", sumilla:"Ley General de Salud. Norma los derechos, deberes y responsabilidades de las personas en materia de salud.", agrupacion:"Normas de alcance general", fecha_pub:"1997-07-20", sector:"Salud" },
+  { tipo:"Ley", numero:"29414", sumilla:"Ley que establece los derechos de las personas usuarias de los servicios de salud.", agrupacion:"Normas de alcance general", fecha_pub:"2009-10-02", sector:"Salud" },
+  { tipo:"Decreto Legislativo", numero:"1161", sumilla:"Ley de Organización y Funciones del Ministerio de Salud.", agrupacion:"Normas de alcance general", fecha_pub:"2013-12-07", sector:"Salud" },
+  { tipo:"Ley", numero:"31336", sumilla:"Ley Nacional de Telesalud.", agrupacion:"Normas de alcance general", fecha_pub:"2021-07-24", sector:"Salud" },
+
+  // ── EDUCACIÓN ──
+  { tipo:"Ley", numero:"28044", sumilla:"Ley General de Educación. Establece los lineamientos generales de la educación y el Sistema Educativo Nacional.", agrupacion:"Normas de alcance general", fecha_pub:"2003-07-29", sector:"Educación" },
+  { tipo:"Ley", numero:"30512", sumilla:"Ley de Institutos y Escuelas de Educación Superior y de la Carrera Pública de sus Docentes.", agrupacion:"Normas de alcance general", fecha_pub:"2016-11-02", sector:"Educación" },
+  { tipo:"Ley", numero:"30220", sumilla:"Nueva Ley Universitaria. Regula la creación, el funcionamiento, la supervisión y el cierre de las universidades.", agrupacion:"Normas de alcance general", fecha_pub:"2014-07-09", sector:"Educación" },
+  { tipo:"Decreto Supremo", numero:"011-2012-ED", sumilla:"Reglamento de la Ley General de Educación.", agrupacion:"Normas de alcance general", fecha_pub:"2012-07-06", sector:"Educación" },
+  { tipo:"Ley", numero:"29944", sumilla:"Ley de Reforma Magisterial. Regula la carrera pública magisterial.", agrupacion:"Normas de alcance general", fecha_pub:"2012-11-25", sector:"Educación" },
+  { tipo:"Ley", numero:"31520", sumilla:"Ley que promueve la educación inclusiva para personas con discapacidad.", agrupacion:"Normas de alcance general", fecha_pub:"2022-05-28", sector:"Educación" },
+
+  // ── JUSTICIA Y DERECHOS ──
+  { tipo:"Ley", numero:"31988", sumilla:"Ley que reforma la Constitución para restablecer la bicameralidad en el Congreso de la República del Perú.", agrupacion:"Constitución", fecha_pub:"2024-03-20", sector:"Justicia" },
+  { tipo:"Ley", numero:"30364", sumilla:"Ley para prevenir, sancionar y erradicar la violencia contra las mujeres y los integrantes del grupo familiar.", agrupacion:"Normas de alcance general", fecha_pub:"2015-11-23", sector:"Justicia" },
+  { tipo:"Ley", numero:"29360", sumilla:"Ley del Servicio de Defensa Pública.", agrupacion:"Normas de alcance general", fecha_pub:"2009-05-15", sector:"Justicia" },
+  { tipo:"Decreto Legislativo", numero:"1301", sumilla:"Decreto Legislativo que modifica el Código Procesal Penal para dotar de eficacia al proceso especial de colaboración eficaz.", agrupacion:"Normas de alcance general", fecha_pub:"2016-12-30", sector:"Justicia" },
+  { tipo:"Ley", numero:"31751", sumilla:"Ley que modifica el Código Penal en materia de delitos de corrupción de funcionarios.", agrupacion:"Normas de alcance general", fecha_pub:"2023-05-15", sector:"Justicia" },
+  { tipo:"Ley", numero:"27806", sumilla:"Ley de Transparencia y Acceso a la Información Pública.", agrupacion:"Normas de alcance general", fecha_pub:"2002-08-03", sector:"Justicia" },
+  { tipo:"Ley", numero:"29733", sumilla:"Ley de Protección de Datos Personales.", agrupacion:"Normas de alcance general", fecha_pub:"2011-07-03", sector:"Justicia" },
+
+  // ── TRANSPORTES E INFRAESTRUCTURA ──
+  { tipo:"Ley", numero:"31941", sumilla:"Ley que dicta medidas para asegurar el financiamiento de la infraestructura de transporte.", agrupacion:"Normas de alcance general", fecha_pub:"2023-11-25", sector:"Transportes" },
+  { tipo:"Ley", numero:"27181", sumilla:"Ley General de Transporte y Tránsito Terrestre.", agrupacion:"Normas de alcance general", fecha_pub:"1999-10-08", sector:"Transportes" },
+  { tipo:"Decreto Supremo", numero:"017-2009-MTC", sumilla:"Reglamento Nacional de Administración de Transportes.", agrupacion:"Normas de alcance general", fecha_pub:"2009-04-22", sector:"Transportes" },
+  { tipo:"Ley", numero:"30900", sumilla:"Ley que crea la Autoridad de Transporte Urbano para Lima y Callao (ATU).", agrupacion:"Normas de alcance general", fecha_pub:"2018-12-28", sector:"Transportes" },
+
+  // ── MEDIO AMBIENTE ──
+  { tipo:"Ley", numero:"28611", sumilla:"Ley General del Ambiente. Norma el marco normativo legal para la gestión ambiental en el Perú.", agrupacion:"Normas de alcance general", fecha_pub:"2005-10-15", sector:"Ambiente" },
+  { tipo:"Ley", numero:"29338", sumilla:"Ley de Recursos Hídricos. Regula el uso y gestión de los recursos hídricos.", agrupacion:"Normas de alcance general", fecha_pub:"2009-03-31", sector:"Ambiente" },
+  { tipo:"Ley", numero:"29763", sumilla:"Ley Forestal y de Fauna Silvestre.", agrupacion:"Normas de alcance general", fecha_pub:"2011-07-22", sector:"Ambiente" },
+  { tipo:"Decreto Supremo", numero:"004-2017-MINAM", sumilla:"Aprueban Estándares de Calidad Ambiental (ECA) para Agua.", agrupacion:"Normas de alcance general", fecha_pub:"2017-06-07", sector:"Ambiente" },
+  { tipo:"Ley", numero:"31973", sumilla:"Ley de Gestión Integral de Residuos Sólidos (modificación).", agrupacion:"Normas de alcance general", fecha_pub:"2024-02-14", sector:"Ambiente" },
+
+  // ── AGRICULTURA ──
+  { tipo:"Ley", numero:"32150", sumilla:"Ley que promueve la inversión en infraestructura de riego tecnificado para la agricultura familiar.", agrupacion:"Normas de alcance general", fecha_pub:"2026-04-23", sector:"Agricultura" },
+  { tipo:"Ley", numero:"31071", sumilla:"Ley de Semillas. Regula la producción, certificación y comercialización de semillas en el Perú.", agrupacion:"Normas de alcance general", fecha_pub:"2020-11-23", sector:"Agricultura" },
+  { tipo:"Decreto Supremo", numero:"007-2017-MINAGRI", sumilla:"Reglamento del Sistema Nacional de Innovación Agraria.", agrupacion:"Normas de alcance general", fecha_pub:"2017-03-08", sector:"Agricultura" },
+
+  // ── TECNOLOGÍA Y DIGITAL ──
+  { tipo:"Ley", numero:"30096", sumilla:"Ley de Delitos Informáticos. Regula conductas punibles cometidas mediante sistemas informáticos.", agrupacion:"Normas de alcance general", fecha_pub:"2013-10-22", sector:"Tecnología" },
+  { tipo:"Ley", numero:"31814", sumilla:"Ley que regula los activos virtuales y el uso de tecnologías basadas en blockchain.", agrupacion:"Normas de alcance general", fecha_pub:"2023-07-20", sector:"Tecnología" },
+  { tipo:"Decreto Supremo", numero:"029-2021-PCM", sumilla:"Aprueba el Reglamento del Decreto Legislativo 1412 que aprueba la Ley de Gobierno Digital.", agrupacion:"Normas de alcance general", fecha_pub:"2021-03-13", sector:"Tecnología" },
+  { tipo:"Ley", numero:"27269", sumilla:"Ley de Firmas y Certificados Digitales.", agrupacion:"Normas de alcance general", fecha_pub:"2000-05-28", sector:"Tecnología" },
+
+  // ── VIVIENDA Y URBANISMO ──
+  { tipo:"Ley", numero:"29090", sumilla:"Ley de Regulación de Habilitaciones Urbanas y de Edificaciones.", agrupacion:"Normas de alcance general", fecha_pub:"2007-09-25", sector:"Vivienda" },
+  { tipo:"Decreto Supremo", numero:"008-2022-VIVIENDA", sumilla:"Aprueban el Reglamento Nacional de Edificaciones (RNE) actualizado.", agrupacion:"Normas de alcance general", fecha_pub:"2022-08-16", sector:"Vivienda" },
+  { tipo:"Ley", numero:"31561", sumilla:"Ley que promueve el acceso a la vivienda formal para personas de bajos recursos económicos.", agrupacion:"Normas de alcance general", fecha_pub:"2022-08-11", sector:"Vivienda" },
+
+  // ── CONTRATACIONES Y ESTADO ──
+  { tipo:"Ley", numero:"30225", sumilla:"Ley de Contrataciones del Estado.", agrupacion:"Normas de alcance general", fecha_pub:"2014-07-11", sector:"Contrataciones" },
+  { tipo:"Decreto Legislativo", numero:"1444", sumilla:"Decreto Legislativo que modifica la Ley 30225, Ley de Contrataciones del Estado.", agrupacion:"Normas de alcance general", fecha_pub:"2018-09-16", sector:"Contrataciones" },
+  { tipo:"Decreto Supremo", numero:"344-2018-EF", sumilla:"Reglamento de la Ley de Contrataciones del Estado.", agrupacion:"Normas de alcance general", fecha_pub:"2018-12-31", sector:"Contrataciones" },
+
+  // ── RECIENTES 2025-2026 ──
+  { tipo:"Ley", numero:"32089", sumilla:"Ley que modifica el Código Civil en materia de prescripción extintiva y caducidad.", agrupacion:"Normas de alcance general", fecha_pub:"2025-01-15", sector:"Justicia" },
+  { tipo:"Decreto Supremo", numero:"001-2025-PCM", sumilla:"Aprueban medidas para la simplificación administrativa en entidades del Poder Ejecutivo.", agrupacion:"Normas de alcance general", fecha_pub:"2025-01-07", sector:"Justicia" },
+  { tipo:"Ley", numero:"32110", sumilla:"Ley que establece la identidad digital como derecho fundamental de acceso a servicios del Estado.", agrupacion:"Normas de alcance general", fecha_pub:"2025-03-05", sector:"Tecnología" },
+  { tipo:"Decreto Supremo", numero:"003-2026-MINEDU", sumilla:"Aprueban el nuevo Currículo Nacional de la Educación Básica actualizado.", agrupacion:"Normas de alcance general", fecha_pub:"2026-03-22", sector:"Educación" },
+  { tipo:"Ley", numero:"32145", sumilla:"Ley que crea el Fondo de Reparación para Víctimas del Conflicto Armado Interno.", agrupacion:"Normas de alcance general", fecha_pub:"2026-04-10", sector:"Justicia" },
 ];
 
 // ── HELPERS ──
 function addDays(dateStr, days) {
-  const d = new Date(dateStr);
+  const d = new Date(dateStr + 'T00:00:00');
   d.setDate(d.getDate() + days);
   return d;
 }
@@ -909,22 +540,59 @@ function formatDate(d) {
 }
 
 function isVigente(norma) {
-  const vigencia = addDays(norma.fecha_pub, 1);
-  return new Date() >= vigencia;
+  return new Date() >= addDays(norma.fecha_pub, 1);
+}
+
+const SECTORES = [...new Set(NORMAS.map(n => n.sector))].sort();
+const TIPOS    = [...new Set(NORMAS.map(n => n.tipo))].sort();
+
+// ── INIT STATS ──
+document.getElementById('total-normas').textContent = NORMAS.length;
+document.getElementById('total-sectores').textContent = SECTORES.length;
+
+function buildStats() {
+  const bar = document.getElementById('stats-bar');
+  const vigentes = NORMAS.filter(isVigente).length;
+  const espera   = NORMAS.length - vigentes;
+  const bySector = {};
+  NORMAS.forEach(n => bySector[n.sector] = (bySector[n.sector]||0)+1);
+  const topSector = Object.entries(bySector).sort((a,b)=>b[1]-a[1])[0];
+
+  bar.innerHTML = `
+    <div class="stat-pill"><span class="stat-num">${NORMAS.length}</span><span class="stat-label">Normas totales</span></div>
+    <div class="stat-pill green"><span class="stat-num">${vigentes}</span><span class="stat-label">Vigentes</span></div>
+    <div class="stat-pill amber"><span class="stat-num">${espera}</span><span class="stat-label">En espera</span></div>
+    <div class="stat-pill gold"><span class="stat-num">${SECTORES.length}</span><span class="stat-label">Sectores</span></div>
+    <div class="stat-pill"><span class="stat-num">${topSector[0]}</span><span class="stat-label">Sector + normas (${topSector[1]})</span></div>
+  `;
+}
+
+function buildSectorFilters() {
+  const container = document.getElementById('sector-filters-buscar');
+  const all = ['Todos', ...SECTORES];
+  container.innerHTML = all.map(s =>
+    `<button class="sector-btn ${s==='Todos'?'active':''}" onclick="filterBySector('${s}', this)">${s}</button>`
+  ).join('');
+}
+
+let currentSectorFilter = 'Todos';
+
+function filterBySector(sector, btn) {
+  currentSectorFilter = sector;
+  document.querySelectorAll('.sector-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  buscar();
 }
 
 // ── TABS ──
-function showTab(id) {
+function showTab(id, btn) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
-  event.target.classList.add('active');
-  if (id === 'catalogo') renderCatalog('Todos');
+  if(btn) btn.classList.add('active');
+  if (id === 'catalogo') renderCatalog('Todos', 1);
   if (id === 'quiz') startQuiz();
 }
-
-// ── TOTAL ──
-document.getElementById('total-normas').textContent = NORMAS.length;
 
 // ── BUSCADOR ──
 document.getElementById('search-input').addEventListener('keydown', e => { if (e.key === 'Enter') buscar(); });
@@ -933,9 +601,17 @@ function buscar() {
   const q = document.getElementById('search-input').value.trim().toLowerCase();
   const container = document.getElementById('search-result');
   container.innerHTML = '';
-  if (!q) return;
 
-  const results = NORMAS.filter(n => n.numero.toLowerCase().includes(q) || n.sumilla.toLowerCase().includes(q));
+  let pool = NORMAS;
+  if (currentSectorFilter !== 'Todos') pool = pool.filter(n => n.sector === currentSectorFilter);
+
+  const results = q
+    ? pool.filter(n =>
+        n.numero.toLowerCase().includes(q) ||
+        n.sumilla.toLowerCase().includes(q) ||
+        n.sector.toLowerCase().includes(q) ||
+        n.tipo.toLowerCase().includes(q))
+    : pool;
 
   if (results.length === 0) {
     container.innerHTML = `<div class="no-result"><div class="no-icon">🔎</div><h3>Sin resultados</h3><p>No se encontró ninguna norma con "<strong>${q}</strong>" en la base de datos SPIJ.</p></div>`;
@@ -944,16 +620,16 @@ function buscar() {
 
   results.forEach((n, i) => {
     const vigencia = addDays(n.fecha_pub, 1);
-    const vigente = new Date() >= vigencia;
+    const vigente  = new Date() >= vigencia;
     const diasFaltan = Math.ceil((vigencia - new Date()) / 86400000);
 
     const card = document.createElement('div');
     card.className = 'norma-card';
-    card.style.animationDelay = (i * 0.08) + 's';
+    card.style.animationDelay = (i * 0.06) + 's';
     card.innerHTML = `
       <div class="norma-card-header">
         <div>
-          <div class="norma-tipo">${n.tipo} &nbsp;·&nbsp; N° ${n.numero}</div>
+          <div class="norma-tipo">${n.tipo} &nbsp;·&nbsp; N° ${n.numero} &nbsp;·&nbsp; ${n.sector}</div>
           <div class="norma-title">${n.sumilla}</div>
         </div>
         <div class="status-badge ${vigente ? 'vigente' : 'espera'}">
@@ -963,8 +639,9 @@ function buscar() {
       </div>
       <div class="norma-card-body">
         <div class="norma-field"><label>Sector</label><value>${n.sector}</value></div>
+        <div class="norma-field"><label>Tipo</label><value>${n.tipo}</value></div>
         <div class="norma-field"><label>Agrupación</label><value>${n.agrupacion}</value></div>
-        <div class="norma-field"><label>Publicado el</label><value>${formatDate(new Date(n.fecha_pub))}</value></div>
+        <div class="norma-field"><label>Publicado el</label><value>${formatDate(new Date(n.fecha_pub + 'T00:00:00'))}</value></div>
         <div class="norma-field"><label>Vigente desde</label><value>${formatDate(vigencia)}</value></div>
       </div>
       <div class="norma-card-footer">
@@ -978,64 +655,131 @@ function buscar() {
   });
 }
 
-// ── CATÁLOGO ──
-let activeFiltro = 'Todos';
+// ── CATÁLOGO CON PAGINACIÓN ──
+const PAGE_SIZE = 12;
+let catalogPage = 1;
+let catalogFiltro = 'Todos';
 
-function renderCatalog(filtro) {
-  activeFiltro = filtro;
+function renderCatalog(filtro, page) {
+  catalogFiltro = filtro;
+  catalogPage = page || 1;
 
-  // filtros
-  const tipos = ['Todos', ...new Set(NORMAS.map(n => n.tipo))];
+  const tipos = ['Todos', ...TIPOS];
   const fContainer = document.getElementById('catalog-filters');
   fContainer.innerHTML = tipos.map(t =>
-    `<button class="filter-btn ${t === filtro ? 'active' : ''}" onclick="renderCatalog('${t}')">${t}</button>`
+    `<button class="filter-btn ${t === filtro ? 'active' : ''}" onclick="renderCatalog('${t}', 1)">${t}</button>`
   ).join('');
 
-  const grid = document.getElementById('catalog-grid');
   const filtered = filtro === 'Todos' ? NORMAS : NORMAS.filter(n => n.tipo === filtro);
+  const totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+  const start = (catalogPage - 1) * PAGE_SIZE;
+  const slice = filtered.slice(start, start + PAGE_SIZE);
 
-  grid.innerHTML = filtered.map((n, i) => {
+  const grid = document.getElementById('catalog-grid');
+  grid.innerHTML = slice.map((n, i) => {
     const v = isVigente(n);
-    return `<div class="catalog-row" style="animation-delay:${i*0.05}s">
+    return `<div class="catalog-row" style="animation-delay:${i*0.04}s">
       <span class="catalog-tipo-badge">${n.tipo}</span>
       <span class="catalog-sumilla">${n.sumilla}</span>
       <span class="catalog-num">${n.numero}</span>
       <span class="status-badge ${v ? 'vigente' : 'espera'}" style="font-size:11px; padding:6px 12px">${v ? '✅ Vigente' : '⏳ Espera'}</span>
     </div>`;
   }).join('');
+
+  // pagination
+  const pag = document.getElementById('catalog-pagination');
+  if (totalPages <= 1) { pag.innerHTML = ''; return; }
+
+  let html = `<span class="page-info">${filtered.length} normas</span>`;
+  if (catalogPage > 1) html += `<button class="page-btn" onclick="renderCatalog('${filtro}', ${catalogPage-1})">‹ Ant</button>`;
+  for (let p = 1; p <= totalPages; p++) {
+    html += `<button class="page-btn ${p===catalogPage?'active':''}" onclick="renderCatalog('${filtro}', ${p})">${p}</button>`;
+  }
+  if (catalogPage < totalPages) html += `<button class="page-btn" onclick="renderCatalog('${filtro}', ${catalogPage+1})">Sig ›</button>`;
+  pag.innerHTML = html;
 }
 
-// ── QUIZ ──
+// ── QUIZ EXPANDIDO (10 preguntas) ──
 const PREGUNTAS = [
   {
     q: "Según el Art. 109 de la Constitución del Perú, ¿desde cuándo es obligatoria una ley?",
-    opts: ["Desde el mismo día de su publicación en El Peruano", "Desde el día siguiente a su publicación", "Desde que el Presidente la promulga", "Desde que el Congreso la aprueba"],
+    opts: ["Desde el mismo día de su publicación en El Peruano","Desde el día siguiente a su publicación","Desde que el Presidente la promulga","Desde que el Congreso la aprueba"],
     correct: 1,
     feedback: "Correcto. El Art. 109 establece que la ley es obligatoria desde el día siguiente de su publicación en el diario oficial, salvo que la propia ley postergue su vigencia."
   },
   {
     q: "¿Cómo se llama el período de tiempo entre la publicación de una norma y su entrada en vigor?",
-    opts: ["Período de gracia", "Vacatio legis", "Vacancia legal", "Mora legislativa"],
+    opts: ["Período de gracia","Vacatio legis","Vacancia legal","Mora legislativa"],
     correct: 1,
-    feedback: "Correcto. La vacatio legis (latín: 'vacación de la ley') es el período que una norma concede para que los destinatarios se adapten antes de que sea exigible."
+    feedback: "Correcto. La vacatio legis (latín: 'vacación de la ley') es el período que permite a ciudadanos e instituciones adaptarse antes de que la norma sea exigible."
   },
   {
     q: "¿Dónde se publica oficialmente una ley para que tenga vigencia en el Perú?",
-    opts: ["En la página web del Congreso", "En el Diario Oficial El Peruano", "En el portal del Tribunal Constitucional", "En el SPIJ directamente"],
+    opts: ["En la página web del Congreso","En el Diario Oficial El Peruano","En el portal del Tribunal Constitucional","En el SPIJ directamente"],
     correct: 1,
-    feedback: "Correcto. El Diario Oficial El Peruano es el medio oficial de publicación de normas legales. Sin esa publicación, la ley no puede exigirse."
+    feedback: "Correcto. El Diario Oficial El Peruano es el medio oficial de publicación. Sin esa publicación, la ley no puede exigirse."
   },
   {
     q: "Una ley posterior es incompatible con una ley anterior, sin derogarla expresamente. ¿Qué ocurre?",
-    opts: ["La ley anterior sigue vigente hasta sentencia judicial", "Se aplica la ley que favorezca al ciudadano", "Hay derogación tácita de la ley anterior", "Ambas leyes coexisten indefinidamente"],
+    opts: ["La ley anterior sigue vigente hasta sentencia judicial","Se aplica la ley que favorezca al ciudadano","Hay derogación tácita de la ley anterior","Ambas leyes coexisten indefinidamente"],
     correct: 2,
     feedback: "Correcto. La derogación tácita ocurre cuando una norma posterior regula la misma materia de forma incompatible con la anterior, aunque no la mencione explícitamente."
   },
   {
     q: "¿Quién puede promulgar una ley si el Presidente no lo hace en el plazo legal?",
-    opts: ["El Tribunal Constitucional", "El Poder Judicial", "El propio Congreso de la República", "El Ministerio de Justicia"],
+    opts: ["El Tribunal Constitucional","El Poder Judicial","El propio Congreso de la República","El Ministerio de Justicia"],
     correct: 2,
-    feedback: "Correcto. Si el Presidente no promulga la ley dentro de los 15 días hábiles, el Congreso puede ordenar su promulgación y publicación directamente."
+    feedback: "Correcto. Si el Presidente no promulga ni observa la ley dentro de los 15 días hábiles, el Congreso puede ordenar su promulgación y publicación directamente."
+  },
+  {
+    q: "¿Qué artículo de la Constitución del Perú establece el principio de irretroactividad de la ley?",
+    opts: ["Artículo 103","Artículo 109","Artículo 51","Artículo 200"],
+    correct: 0,
+    feedback: "Correcto. El Art. 103 establece que ninguna ley tiene fuerza ni efecto retroactivo, salvo en materia penal cuando favorece al reo."
+  },
+  {
+    q: "¿Qué es la 'aplicación inmediata' de la ley según la Constitución peruana?",
+    opts: [
+      "La ley retroactiva que aplica a hechos pasados",
+      "La ley se aplica a las consecuencias de relaciones jurídicas existentes desde su vigencia",
+      "La ley entra en vigor el mismo día de su publicación",
+      "La ley se aplica solo a hechos futuros que ocurran un año después"
+    ],
+    correct: 1,
+    feedback: "Correcto. El Art. 103 establece que la ley, desde su entrada en vigencia, se aplica a las consecuencias de relaciones jurídicas existentes. No es retroactiva, pero sí inmediata."
+  },
+  {
+    q: "Un Decreto Supremo es emitido por:",
+    opts: [
+      "El Congreso de la República",
+      "El Presidente con refrendo del Ministro del sector",
+      "El Poder Judicial",
+      "La Contraloría General de la República"
+    ],
+    correct: 1,
+    feedback: "Correcto. Los Decretos Supremos son emitidos por el Presidente de la República y refrendados por uno o más ministros del sector correspondiente."
+  },
+  {
+    q: "¿Qué significa que una norma tenga 'vacatio legis' de 60 días?",
+    opts: [
+      "La norma fue observada por el Congreso durante 60 días",
+      "La norma tardó 60 días en ser publicada tras su aprobación",
+      "La norma entrará en vigor 60 días después de su publicación",
+      "La norma estará vigente solo por 60 días"
+    ],
+    correct: 2,
+    feedback: "Correcto. La vacatio legis de 60 días significa que aunque la norma ya fue publicada en El Peruano, recién será obligatoria 60 días después de esa publicación."
+  },
+  {
+    q: "¿Cuál es la norma de mayor jerarquía en el ordenamiento jurídico peruano?",
+    opts: [
+      "Los Decretos Legislativos delegados por el Congreso",
+      "Las Leyes Orgánicas aprobadas por mayoría absoluta",
+      "La Constitución Política del Perú",
+      "Los Tratados Internacionales ratificados por el Perú"
+    ],
+    correct: 2,
+    feedback: "Correcto. La Constitución Política del Perú (1993) es la norma suprema del ordenamiento jurídico. Ninguna ley, decreto o resolución puede contradecirla (Art. 51 Const.)."
   }
 ];
 
@@ -1050,11 +794,11 @@ function renderQuestion() {
   const card = document.getElementById('quiz-card');
   if (qIdx >= PREGUNTAS.length) {
     const pct = Math.round((score / PREGUNTAS.length) * 100);
-    const msg = pct >= 80 ? '¡Excelente dominio del tema!' : pct >= 60 ? 'Buen avance, sigue repasando.' : 'Te recomendamos revisar la sección Aprende.';
+    const msg = pct >= 80 ? '🏆 ¡Excelente dominio del tema!' : pct >= 60 ? '📚 Buen avance, sigue repasando.' : '💡 Te recomendamos revisar la sección Aprende.';
     card.innerHTML = `
       <div class="quiz-score">
         <div class="score-num">${score}/${PREGUNTAS.length}</div>
-        <div class="score-label">Respuestas correctas</div>
+        <div class="score-label">Respuestas correctas · ${pct}%</div>
         <div class="score-msg">${msg}</div>
         <button class="quiz-restart" onclick="startQuiz()">🔄 Reiniciar quiz</button>
       </div>`;
@@ -1069,12 +813,13 @@ function renderQuestion() {
 
   card.innerHTML = `
     <div class="quiz-progress">${dots}</div>
+    <div style="font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:12px;">Pregunta ${qIdx+1} de ${PREGUNTAS.length}</div>
     <div class="quiz-q">${p.q}</div>
     <div class="quiz-options">
       ${p.opts.map((o, i) => `<button class="quiz-opt" onclick="answer(${i})">${o}</button>`).join('')}
     </div>
     <div class="quiz-feedback" id="qfb" style="display:none"></div>
-    <button class="quiz-next" id="qnext" onclick="nextQ()">Siguiente pregunta →</button>`;
+    <button class="quiz-next" id="qnext" onclick="nextQ()">${qIdx + 1 < PREGUNTAS.length ? 'Siguiente pregunta →' : 'Ver resultados →'}</button>`;
 }
 
 function answer(idx) {
@@ -1084,10 +829,8 @@ function answer(idx) {
   const opts = document.querySelectorAll('.quiz-opt');
   const fb = document.getElementById('qfb');
   const nxt = document.getElementById('qnext');
-
   opts.forEach(o => o.disabled = true);
   opts[p.correct].classList.add('correct');
-
   if (idx === p.correct) {
     score++;
     fb.className = 'quiz-feedback ok';
@@ -1097,18 +840,16 @@ function answer(idx) {
     fb.className = 'quiz-feedback fail';
     fb.textContent = '❌ Incorrecto. ' + p.feedback;
   }
-
   fb.style.display = 'block';
   nxt.style.display = 'inline-block';
 }
 
-function nextQ() {
-  qIdx++;
-  renderQuestion();
-}
+function nextQ() { qIdx++; renderQuestion(); }
 
-// init
-renderCatalog('Todos');
+// ── BOOT ──
+buildStats();
+buildSectorFilters();
+renderCatalog('Todos', 1);
 </script>
 </body>
 </html>
